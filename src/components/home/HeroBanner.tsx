@@ -9,19 +9,7 @@ const heroData = {
   },
 };
 
-const HeroSlice = () => {
-  // const { heroData } = useStaticQuery(graphql`
-  //   query {
-  //     heroData: contentfulHeroSlice {
-  //       headline
-  //       title
-  //       heroImage {
-  //         url
-  //       }
-  //     }
-  //   }
-  // `)
-
+const HeroBanner = () => {
   return (
     <section
       className='relative bg-cover bg-center bg-no-repeat h-[300px] md:h-[450px] lg:h-[615px]'
@@ -39,4 +27,4 @@ const HeroSlice = () => {
   );
 };
 
-export default HeroSlice;
+export default HeroBanner;

@@ -1,51 +1,51 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-interface Props {
-  description?: string;
+interface SeoProps {
+  subtitle?: string;
   lang?: string;
   meta?: [];
-  title: string;
 }
 interface Meta {
   property?: string;
   name?: string;
   content: string;
 }
-const Seo = ({ description, lang, meta, title }: Props) => {
-  const { site } = useStaticQuery(
+
+const Seo = ({ subtitle, lang = 'en', meta }: SeoProps) => {
+  const { metadata } = useStaticQuery(
     graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-          }
+      query metadataQuery {
+        metadata: contentfulSiteMetadata {
+          title
+          description
         }
       }
     `,
   );
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+
+  const title = metadata.title;
+  const description = metadata.description;
+
   let typeSafeMeta: Array<Meta>;
   if (meta instanceof Array) {
     typeSafeMeta = meta;
   } else {
     typeSafeMeta = [];
   }
+
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : ''}
+      titleTemplate={title ? `${title} || ${subtitle}` : 'void(0) || Darkmattr Tech'}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:title`,
@@ -53,7 +53,7 @@ const Seo = ({ description, lang, meta, title }: Props) => {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -65,30 +65,20 @@ const Seo = ({ description, lang, meta, title }: Props) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
+          content: '@void0music',
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: 'void(0)',
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
         ...typeSafeMeta,
       ]}
     />
   );
 };
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-};
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-};
+
 export default Seo;

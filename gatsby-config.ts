@@ -7,8 +7,6 @@ dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: 'void(0)',
-    description: 'void(0)',
     author: 'void(0)',
     siteUrl: 'https://void0music.com/',
   },
@@ -34,7 +32,7 @@ const config: GatsbyConfig = {
         short_name: 'void(0)',
         start_url: '/',
         background_color: '#2B282E',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'src/images/vz-icon.png',
       },
     },
     {

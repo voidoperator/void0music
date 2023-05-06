@@ -5,16 +5,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+@font-face {
+  font-family: ShareTechMono;
+  src: url(/Share-Tech-Mono.eot) format('embedded-opentype'), url(/Share-Tech-Mono.ttf) format('truetype'),
+    url(/Share-Tech-Mono.woff) format('woff'), url(/Share-Tech-Mono.woff2) format('woff2'),
+    url(/Share-Tech-Mono.otf) format('otf');
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-display: swap;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
-}
-
-a,
-button {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'ShareTechMono', sans-serif;
+  background-color: #0f0f0f;
 }
 
 a {
