@@ -11,10 +11,21 @@ const socialIconsMapper = {
   YouTube: YouTubeIcon,
 };
 
+const colorMapper = {
+  Spotify: 'hover:text-[#1DB954]',
+  'Apple Music': 'hover:text-[#FC3C44]',
+  SoundCloud: 'hover:text-[#F26F23]',
+  Twitter: 'hover:text-[#1DA1F2]',
+  Instagram: 'hover:text-[#D62976]',
+  Facebook: 'hover:text-[#3B5998]',
+  YouTube: 'hover:text-[#B2071D]',
+};
+
 function SocialIcon({ icon, twClasses }: SocialIconProps): ReactElement {
   const IconComponent = socialIconsMapper[icon];
+  const classes = `${twClasses} ${colorMapper[icon]}`;
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 25' fill='currentColor' className={twClasses}>
+    <svg id={icon} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 25' fill='currentColor' className={classes}>
       <IconComponent />
     </svg>
   );

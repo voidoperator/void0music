@@ -31,7 +31,7 @@ const Gradient: Motion.Tag<'div'> = tw(motion.div)`
 `;
 
 const NavBar = ({ navItems }: NavBarProps) => {
-  const [scroll, setScroll] = useState<number>(0);
+  // const [scroll, setScroll] = useState<number>(0);
   const headerRef = useRef<HTMLDivElement>(null);
   const gradientControls = useAnimation();
   const headerControls = useAnimation();
@@ -55,7 +55,7 @@ const NavBar = ({ navItems }: NavBarProps) => {
       headerControls.start({ top: '-1.25rem' });
       gradientControls.start({ opacity: 1 });
     }
-    setScroll(yAxis);
+    // setScroll(yAxis);
   };
 
   const vzLogo = navItems[0];
@@ -65,7 +65,7 @@ const NavBar = ({ navItems }: NavBarProps) => {
       <Nav>
         <Container>
           <Link className='text-lg z-20' to='/linktree' title={vzLogo.title}>
-            <VzLogoIcon twClasses='h-24' />
+            <VzLogoIcon twClasses='h-24 transition-all duration-300 hover:opacity-75' />
           </Link>
           <SocialIconsWrapper>
             <IconsWrapper>
@@ -74,7 +74,7 @@ const NavBar = ({ navItems }: NavBarProps) => {
                 const { id, title, hyperlink } = item;
                 return (
                   <IconAnchor key={id} target='_blank' href={hyperlink} title={title}>
-                    <SocialIcon icon={title} twClasses='h-7' />
+                    <SocialIcon icon={title} twClasses='h-7 text-white transition-all duration-300' />
                   </IconAnchor>
                 );
               })}

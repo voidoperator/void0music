@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import NavBar from '../components/home/NavBar';
 import HeroBanner from '../components/home/HeroBanner';
 import Seo from '../components/Seo';
+import Test from '../components/home/Test';
 
 const IndexPage = () => {
   const contentfulData = useStaticQuery(
@@ -25,6 +26,7 @@ const IndexPage = () => {
       <Seo subtitle='𝔻𝕒𝕣𝕜𝕞𝕒𝕥𝕥𝕣 𝕋𝕖𝕔𝕙' />
       <NavBar navItems={navbar.navItems} />
       <HeroBanner />
+      <Test />
     </>
   );
 };
